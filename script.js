@@ -66,8 +66,8 @@ const displayLevelWords = (words) => {
             </h2>
           </div>
           <div class="card-icons flex justify-between h-full items-end px-4 mt-5">
-            <button class="btn bg-sky-100 border-0 hover:bg-sky-500">
-              <i class="fa-solid fa-circle-info"></i>
+            <button onclick="my_modal_1.showModal()" class="btn bg-sky-100 border-0 hover:bg-sky-500">
+              <i  class="fa-solid fa-circle-info"></i>
             </button>
 
             <button class="btn bg-sky-100 border-0 hover:bg-sky-500">
@@ -91,7 +91,7 @@ const displayLesson = (lessons) => {
     //3. create a div elements
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-             <button id="lesson-btn-${lesson.level_no}" onclick="levelWord('${lesson.level_no}')" class="btn border-primary btn-outline text-primary   lesson-btn">
+             <button id="lesson-btn-${lesson.level_no}" onclick="levelWord('${lesson.level_no}')" class="btn border-primary btn-outline text-primary  lesson-btn">
             <i class="fa-solid fa-book-open"></i> Lesson - ${lesson.level_no}
           </button>
           `;
