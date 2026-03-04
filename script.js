@@ -29,7 +29,7 @@ const displayLevelWords = (words) => {
           <div class="space-y-5">
             <h2 class="font-bold text-[32px] text-neutral">${word.word}</h2>
             <p class="text-[20px] font-medium text-neutral">
-              Meaning / Pronounciation
+              Meaning / Pronunciation
             </p>
             <h2 class="font-bangla font-semibold text-[32px] text-neutral-600">
               ${word.meaning} / ${word.pronunciation}"
