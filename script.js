@@ -23,7 +23,8 @@ const displayLevelWords = (words) => {
   words.forEach((word) => {
     // create new element
     const lessonDiv = document.createElement("div");
-    lessonDiv.className = "card text-center pt-10 pb-5 border border-gray-200";
+    lessonDiv.className =
+      "card text-center pt-10 pb-5 bg-white border border-gray-200";
     lessonDiv.innerHTML = `
           <div class="space-y-5">
             <h2 class="font-bold text-[32px] text-neutral">${word.word}</h2>
