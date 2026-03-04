@@ -86,6 +86,12 @@ const levelWord = (id) => {
     });
 };
 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 // display every single with button calls
 const displayLevelWords = (words) => {
   //finding the lesson card container
@@ -130,7 +136,7 @@ const displayLevelWords = (words) => {
               <i  class="fa-solid fa-circle-info"></i>
             </button>
 
-            <button class="btn bg-sky-100 border-0 hover:bg-sky-500">
+            <button onclick="pronounceWord('${word.word}')" class="btn bg-sky-100 border-0 hover:bg-sky-500">
               <i class="fa-solid fa-volume-high"></i>
             </button>
           </div>
@@ -179,4 +185,5 @@ document.getElementById("search-btn").addEventListener("click", () => {
       );
       displayLevelWords(filterWords);
     });
+  input.value = "";
 });
