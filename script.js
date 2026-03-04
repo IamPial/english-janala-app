@@ -10,24 +10,43 @@ const levelWord = (id) => {
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => console.log(data.data));
+    .then((data) => displayLevelWords(data.data));
 };
 
+// display every single with button calls
 const displayLevelWords = (words) => {
   //finding the lesson card container
   const lessonCardContainer = document.getElementById("lesson-card-container");
   lessonCardContainer.innerHTML = "";
+
+  // looping the every single word
   words.forEach((word) => {
+    // create new element
     const lessonDiv = document.createElement("div");
-    lessonDiv.innerHTML = ``;
+    lessonDiv.className = "card text-center pt-10 pb-5 border border-gray-200";
+    lessonDiv.innerHTML = `
+          <div class="space-y-5">
+            <h2 class="font-bold text-[32px] text-neutral">${word.word}</h2>
+            <p class="text-[20px] font-medium text-neutral">
+              Meaning / Pronounciation
+            </p>
+            <h2 class="font-bangla font-semibold text-[32px] text-neutral-600">
+              ${word.meaning} / ${word.pronunciation}"
+            </h2>
+          </div>
+          <div class="card-icons flex justify-between px-4 mt-5">
+            <span class="p-4 rounded-lg bg-sky-100"
+              ><i class="fa-solid fa-circle-info"></i
+            ></span>
+            <span class="p-4 rounded-lg bg-sky-100"
+              ><i class="fa-solid fa-volume-high"></i
+            ></span>
+          </div>
+      
+    `;
+    lessonCardContainer.appendChild(lessonDiv);
   });
 };
-
-// id: 5
-// level: 1
-// meaning: "আগ্রহী"
-// pronunciation: "ইগার"
-// word: "Eager"
 
 // display lesson btn
 const displayLesson = (lessons) => {
@@ -50,5 +69,3 @@ const displayLesson = (lessons) => {
 };
 
 loadLesson();
-
-// TODO: work with lesson btn functionality
