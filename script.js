@@ -35,11 +35,11 @@ const displayLevelWords = (words) => {
             </h2>
           </div>
           <div class="card-icons flex justify-between h-full items-end px-4 mt-5">
-            <button class="btn bg-sky-100 border-0 ">
+            <button class="btn bg-sky-100 border-0 hover:bg-sky-500">
               <i class="fa-solid fa-circle-info"></i>
             </button>
 
-            <button class="btn bg-sky-100 border-0">
+            <button class="btn bg-sky-100 border-0 hover:bg-sky-500">
               <i class="fa-solid fa-volume-high"></i>
             </button>
           </div>
