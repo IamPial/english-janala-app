@@ -58,11 +58,7 @@ const displayLoadWord = (word) => {
               </h4>
              <div>${createNewArr(word.synonyms)}</div>
             </div>
-            <div class="">
-              <button class="btn btn-primary text-white">
-                Complete Learning
-              </button>
-            </div>
+            
   `;
   document.getElementById("word_modal").showModal();
 };
