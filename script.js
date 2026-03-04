@@ -34,8 +34,8 @@ const displayLevelWords = (words) => {
               ${word.meaning} / ${word.pronunciation}"
             </h2>
           </div>
-          <div class="card-icons flex justify-between px-4 mt-5">
-            <button class="btn bg-sky-100 border-0">
+          <div class="card-icons flex justify-between h-full items-end px-4 mt-5">
+            <button class="btn bg-sky-100 border-0 ">
               <i class="fa-solid fa-circle-info"></i>
             </button>
 
