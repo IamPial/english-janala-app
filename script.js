@@ -44,6 +44,7 @@ const displayLevelWords = (words) => {
           </div>
       
     `;
+    // append to the container
     lessonCardContainer.appendChild(lessonDiv);
   });
 };
