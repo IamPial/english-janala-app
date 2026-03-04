@@ -35,12 +35,13 @@ const displayLevelWords = (words) => {
             </h2>
           </div>
           <div class="card-icons flex justify-between px-4 mt-5">
-            <span class="p-4 rounded-lg bg-sky-100"
-              ><i class="fa-solid fa-circle-info"></i
-            ></span>
-            <span class="p-4 rounded-lg bg-sky-100"
-              ><i class="fa-solid fa-volume-high"></i
-            ></span>
+            <button class="btn bg-sky-100 border-0">
+              <i class="fa-solid fa-circle-info"></i>
+            </button>
+
+            <button class="btn bg-sky-100 border-0">
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
           </div>
       
     `;
