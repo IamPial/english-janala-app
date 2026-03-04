@@ -1,3 +1,12 @@
+// reusable func for return new arr into the synonyms of modal
+const createNewArr = (arr) => {
+  const elements = arr.map(
+    (el) => `<span class="btn bg-sky-100 rounded-md text-sm text-neutral"
+                >${el}</span>`,
+  );
+  return elements.join(" ");
+};
+
 //fetch the all levels api
 const loadLesson = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
@@ -13,34 +22,18 @@ const loadWord = async (id) => {
   displayLoadWord(details.data);
 };
 
-// {
-//     "word": "Diligent",
-//     "meaning": "পরিশ্রমী",
-//     "pronunciation": "ডিলিজেন্ট",
-//     "level": 5,
-//     "sentence": "He is a diligent student who studies every day.",
-//     "points": 5,
-//     "partsOfSpeech": "adjective",
-//     "synonyms": [
-//         "hardworking",
-//         "industrious",
-//         "persistent"
-//     ],
-//     "id": 4
-// }
-
 //display the load word with modal
 const displayLoadWord = (word) => {
   const detailsContainer = document.getElementById("details-container");
   detailsContainer.innerHTML = `
             <div>
               <h2 class="text-3xl font-semibold text-neutral">
-                ${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.meaning})
+                ${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"})
               </h2>
             </div>
             <div class="space-y-3">
               <p class="text-lg font-medium text-neutral">Meaning</p>
-              <p class="text-lg font-medium text-neutral">${word.meaning}</p>
+              <p class="text-lg font-medium text-neutral">${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"}</p>
             </div>
             <div class="space-y-3">
               <h4 class="text-lg font-semibold text-neutral">Example</h4>
@@ -52,15 +45,7 @@ const displayLoadWord = (word) => {
               <h4 class="text-lg font-semibold text-neutral mb-5">
                 সমার্থক শব্দ গুলো
               </h4>
-              <span class="btn bg-sky-100 rounded-md text-sm text-neutral"
-                >${word.synonyms[0] ? word.synonyms[0] : "আর সমার্থক শব্দ নেই"}</span
-              >
-              <span class="btn bg-sky-100 rounded-md text-sm text-neutral"
-                >${word.synonyms[1] ? word.synonyms[1] : "আর সমার্থক শব্দ নেই"}</span
-              >
-              <span class="btn bg-sky-100 rounded-md text-sm text-neutral"
-                >${word.synonyms[2] ? word.synonyms[2] : "আর সমার্থক শব্দ নেই"}</span
-              >
+             <div>${createNewArr(word.synonyms)}</div>
             </div>
             <div class="">
               <button class="btn btn-primary text-white">
