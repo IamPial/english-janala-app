@@ -5,6 +5,72 @@ const loadLesson = () => {
     .then((data) => displayLesson(data.data));
 };
 
+//load word details from api
+const loadWord = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayLoadWord(details.data);
+};
+
+// {
+//     "word": "Diligent",
+//     "meaning": "পরিশ্রমী",
+//     "pronunciation": "ডিলিজেন্ট",
+//     "level": 5,
+//     "sentence": "He is a diligent student who studies every day.",
+//     "points": 5,
+//     "partsOfSpeech": "adjective",
+//     "synonyms": [
+//         "hardworking",
+//         "industrious",
+//         "persistent"
+//     ],
+//     "id": 4
+// }
+
+//display the load word with modal
+const displayLoadWord = (word) => {
+  const detailsContainer = document.getElementById("details-container");
+  detailsContainer.innerHTML = `
+            <div>
+              <h2 class="text-3xl font-semibold text-neutral">
+                ${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.meaning})
+              </h2>
+            </div>
+            <div class="space-y-3">
+              <p class="text-lg font-medium text-neutral">Meaning</p>
+              <p class="text-lg font-medium text-neutral">${word.meaning}</p>
+            </div>
+            <div class="space-y-3">
+              <h4 class="text-lg font-semibold text-neutral">Example</h4>
+              <p class="text-md text-neutral">
+                ${word.sentence}
+              </p>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-neutral mb-5">
+                সমার্থক শব্দ গুলো
+              </h4>
+              <span class="btn bg-sky-100 rounded-md text-sm text-neutral"
+                >${word.synonyms[0] ? word.synonyms[0] : "আর সমার্থক শব্দ নেই"}</span
+              >
+              <span class="btn bg-sky-100 rounded-md text-sm text-neutral"
+                >${word.synonyms[1] ? word.synonyms[1] : "আর সমার্থক শব্দ নেই"}</span
+              >
+              <span class="btn bg-sky-100 rounded-md text-sm text-neutral"
+                >${word.synonyms[2] ? word.synonyms[2] : "আর সমার্থক শব্দ নেই"}</span
+              >
+            </div>
+            <div class="">
+              <button class="btn btn-primary text-white">
+                Complete Learning
+              </button>
+            </div>
+  `;
+  document.getElementById("word_modal").showModal();
+};
+
 // function for remove class
 const removeClass = () => {
   const removeLessonBtnClassName = document.querySelectorAll(".lesson-btn");
@@ -66,7 +132,7 @@ const displayLevelWords = (words) => {
             </h2>
           </div>
           <div class="card-icons flex justify-between h-full items-end px-4 mt-5">
-            <button onclick="my_modal_1.showModal()" class="btn bg-sky-100 border-0 hover:bg-sky-500">
+            <button onclick="loadWord(${word.id})" class="btn bg-sky-100 border-0 hover:bg-sky-500">
               <i  class="fa-solid fa-circle-info"></i>
             </button>
 
