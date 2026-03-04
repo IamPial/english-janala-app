@@ -91,7 +91,7 @@ const displayLesson = (lessons) => {
     //3. create a div elements
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-             <button id="lesson-btn-${lesson.level_no}" onclick="levelWord('${lesson.level_no}')" class="btn btn-primary btn-outline lesson-btn">
+             <button id="lesson-btn-${lesson.level_no}" onclick="levelWord('${lesson.level_no}')" class="btn border-primary btn-outline text-primary   lesson-btn">
             <i class="fa-solid fa-book-open"></i> Lesson - ${lesson.level_no}
           </button>
           `;
