@@ -7,6 +7,17 @@ const createNewArr = (arr) => {
   return elements.join(" ");
 };
 
+//loading spinner
+const loadingSpinner = (status) => {
+  if (status == true) {
+    document.getElementById("loading-spinner").classList.remove("hidden");
+    document.getElementById("lesson-card-container").classList.add("hidden");
+  } else {
+    document.getElementById("loading-spinner").classList.add("hidden");
+    document.getElementById("lesson-card-container").classList.remove("hidden");
+  }
+};
+
 //fetch the all levels api
 const loadLesson = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
@@ -66,6 +77,7 @@ const removeClass = () => {
 };
 // fetch the single level with api id
 const levelWord = (id) => {
+  loadingSpinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -97,6 +109,7 @@ const displayLevelWords = (words) => {
           </h2>
         </div>
     `;
+    loadingSpinner(false);
     return;
   }
 
@@ -130,6 +143,7 @@ const displayLevelWords = (words) => {
     // append to the container
     lessonCardContainer.appendChild(lessonDiv);
   });
+  loadingSpinner(false);
 };
 
 // display lesson btn
