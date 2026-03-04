@@ -19,6 +19,22 @@ const displayLevelWords = (words) => {
   const lessonCardContainer = document.getElementById("lesson-card-container");
   lessonCardContainer.innerHTML = "";
 
+  // handling a simple error
+  if (words.length == 0) {
+    lessonCardContainer.innerHTML = ` 
+      <div class="col-span-full text-center space-y-6 p-10">
+      <img class="mx-auto" src="./assets/alert-error.png"/>
+          <p class="text-lg text-gray-500">
+            এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।
+          </p>
+          <h2 class="font-bangla text-5xl font-medium text-slate-800">
+            নেক্সট Lesson এ যান
+          </h2>
+        </div>
+    `;
+    return;
+  }
+
   // looping the every single word
   words.forEach((word) => {
     // create new element
@@ -27,12 +43,12 @@ const displayLevelWords = (words) => {
       "card text-center pt-10 pb-5 bg-white border border-gray-200";
     lessonDiv.innerHTML = `
           <div class="space-y-5">
-            <h2 class="font-bold text-[32px] text-neutral">${word.word}</h2>
+            <h2 class="font-bold text-[32px] text-neutral">${word.word ? word.word : "শব্দ পাওয়া যায়নি"}</h2>
             <p class="text-[20px] font-medium text-neutral">
               Meaning / Pronunciation
             </p>
             <h2 class="font-bangla font-semibold text-[32px] text-neutral-600">
-              ${word.meaning} / ${word.pronunciation}"
+              ${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি"}"
             </h2>
           </div>
           <div class="card-icons flex justify-between h-full items-end px-4 mt-5">
