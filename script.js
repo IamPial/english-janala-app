@@ -18,6 +18,13 @@ const loadingSpinner = (status) => {
   }
 };
 
+//Speaker Function
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 //fetch the all levels api
 const loadLesson = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
@@ -85,12 +92,6 @@ const levelWord = (id) => {
       displayLevelWords(data.data);
     });
 };
-
-function pronounceWord(word) {
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "en-EN"; // English
-  window.speechSynthesis.speak(utterance);
-}
 
 // display every single with button calls
 const displayLevelWords = (words) => {
