@@ -1,18 +1,45 @@
+//fetch the all levels api
 const loadLesson = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((response) => response.json())
     .then((data) => displayLesson(data.data));
 };
 
+// fetch the single level with api id
+const levelWord = (id) => {
+  const url = `https://openapi.programming-hero.com/api/level/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => console.log(data.data));
+};
+
+const displayLevelWords = (words) => {
+  //finding the lesson card container
+  const lessonCardContainer = document.getElementById("lesson-card-container");
+  lessonCardContainer.innerHTML = "";
+  words.forEach((word) => {
+    const lessonDiv = document.createElement("div");
+    lessonDiv.innerHTML = ``;
+  });
+};
+
+// id: 5
+// level: 1
+// meaning: "আগ্রহী"
+// pronunciation: "ইগার"
+// word: "Eager"
+
+// display lesson btn
 const displayLesson = (lessons) => {
   //1.find the necessary elements
   const levelContainer = document.getElementById("level-container");
+  levelContainer.innerHTML = "";
   //2. show the all lessons
   lessons.forEach((lesson) => {
     //3. create a div elements
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-             <button class="btn btn-primary btn-outline">
+             <button onclick="levelWord('${lesson.level_no}')" class="btn btn-primary btn-outline">
             <i class="fa-solid fa-book-open"></i> Lesson - ${lesson.level_no}
           </button>
           `;
@@ -23,3 +50,5 @@ const displayLesson = (lessons) => {
 };
 
 loadLesson();
+
+// TODO: work with lesson btn functionality
